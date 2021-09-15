@@ -12,6 +12,7 @@ class ParanoidModel(models.Model):
     class Meta:
         abstract = True
 
+    #  Soft delete
     def delete(self, using=None, keep_parents=False):
         self.deleted_at = datetime.now(tz=timezone.utc)
         self.save()

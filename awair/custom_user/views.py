@@ -21,10 +21,10 @@ class CustomUserViewSet(viewsets.GenericViewSet):
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
-        if not request.data['email']:
+        #  check unique email
+        if 'email' not in request.data or not request.data['email']:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        #  check unique email
         if CustomUser.objects.filter(email=request.data['email']).exists():
             return Response(status=status.HTTP_409_CONFLICT)
 
@@ -37,7 +37,12 @@ class CustomUserViewSet(viewsets.GenericViewSet):
             'password': password,
         })
 
+    def retrieve(self, request, *args, **kwargs):
+        user = self.get_object()
+        serializer = self.get_serializer(user)
+        return Response(serializer.data)
+
     def destroy(self, request, *args, **kwargs):
         user = self.get_object()
         user.delete()
-        return Response(status=status.HTTP_200_OK)
+        return Response()
