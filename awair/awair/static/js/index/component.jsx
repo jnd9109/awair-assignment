@@ -3,10 +3,15 @@ const Page = () => {
   const [users, setUsers] = React.useState([]);
   const [errorAlert, setErrorAlert] = React.useState('');
   const [successAlert, setSuccessAlert] = React.useState('');
+  const [recentlyAddedUser, setRecentlyAddedUser] = React.useState(null);
 
   const addUser = React.useCallback((user) => {
-    setUsers([user, ...users])
-  }, [users, setUsers]);
+    setUsers([user, ...users]);
+    setRecentlyAddedUser(user);
+    setTimeout(() => {
+      setRecentlyAddedUser(null);
+    }, 3000);
+  }, [users, setUsers, setRecentlyAddedUser]);
 
   const handleLoadUsers = React.useCallback(async () => {
     try {
@@ -45,7 +50,14 @@ const Page = () => {
       {successAlert && <Alert status='success' message={successAlert} />}
       {errorAlert && (<Alert status='danger' message={errorAlert} />)}
       <UserCreateForm setLoading={setLoading} addUser={addUser} setSuccessAlert={setSuccessAlert} setErrorAlert={setErrorAlert} />
-      <UserList users={users} deleteUser={deleteUser} setSuccessAlert={setSuccessAlert} setErrorAlert={setErrorAlert} setLoading={setLoading} />
+      <UserList
+        users={users}
+        deleteUser={deleteUser}
+        setSuccessAlert={setSuccessAlert}
+        setErrorAlert={setErrorAlert}
+        setLoading={setLoading}
+        recentlyAddedUser={recentlyAddedUser}
+      />
     </PageWrapper>
   );
 };

@@ -117,7 +117,7 @@ const UserCreateForm = ({ setLoading, addUser, setSuccessAlert, setErrorAlert })
   );
 };
 
-const UserList = ({ users, deleteUser, setSuccessAlert, setErrorAlert, setLoading }) => {
+const UserList = ({ users, deleteUser, setSuccessAlert, setErrorAlert, setLoading, recentlyAddedUser }) => {
   const handleDeleteUser = React.useCallback(async (user) => {
     if (confirm(`Are you sure you want to delete ${user.email} ?`)) {
       try {

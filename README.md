@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/python-3.9.1-blue.svg)
 ![Django](https://img.shields.io/badge/django-3.2.7-blue.svg)
 
-Coding assignment for application at Awair
+Coding assignment for application at Awair.
 
 ## Specs
 * Django
