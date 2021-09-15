@@ -165,7 +165,7 @@ const UserList = ({ users, deleteUser, setSuccessAlert, setErrorAlert, setLoadin
         {users && users.map((user) => (
           <tr
             key={user.id}
-            className={recentlyAddedUser === user.id ? "table-success" : ""}
+            className={recentlyAddedUser && recentlyAddedUser.id === user.id ? "table-success" : ""}
           >
             <td>{user.id}</td>
             <td>{user.email}</td>
