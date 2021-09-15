@@ -156,6 +156,7 @@ const UserList = ({ users, deleteUser, setSuccessAlert, setErrorAlert, setLoadin
       <thead>
         <tr>
           <th scope="col">ID</th>
+          <th scope="col">Created at</th>
           <th scope="col">Email</th>
           <th scope="col">Name</th>
           <th scope="col">Delete</th>
@@ -168,6 +169,7 @@ const UserList = ({ users, deleteUser, setSuccessAlert, setErrorAlert, setLoadin
             className={recentlyAddedUser && recentlyAddedUser.id === user.id ? "table-success" : ""}
           >
             <td>{user.id}</td>
+            <td>{moment(user.createdAt).format('LLL')}</td>
             <td>{user.email}</td>
             <td>{user.name}</td>
             <td>

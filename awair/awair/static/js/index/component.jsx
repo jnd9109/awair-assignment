@@ -58,6 +58,7 @@ const Page = () => {
 
   React.useEffect(() => {
     handleLoadUsers();
+    moment.locale(navigator.language);
   }, []);
 
   const deleteUser = React.useCallback((id) => {
