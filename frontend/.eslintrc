@@ -1,0 +1,41 @@
+{
+  "plugins": [
+    "react",
+    "prettier",
+    "import"
+  ],
+  "extends": [
+    "prettier",
+    "airbnb-typescript"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "prettier/prettier": "error",
+    "react/prop-types": "off",
+    "object-curly-newline": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-confusing-arrow": "off",
+    "implicit-arrow-linebreak": "off",
+    "consistent-return": "off",
+    "radix": "off",
+    "arrow-body-style": "warn",
+    "no-console": "off",
+    "react/jsx-one-expression-per-line": "warn",
+    "@typescript-eslint/indent": "warn",
+    "operator-linebreak": "warn",
+    "react/self-closing-comp": "warn",
+    "react/jsx-curly-newline": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "import/order": "warn",
+    "react/no-unused-prop-types": "warn"
+  },
+  "globals": {
+    "React": "writable"
+  },
+  "parserOptions": {
+    "project": ["tsconfig.json"]
+  }
+}
