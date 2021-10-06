@@ -23,9 +23,15 @@
     ]
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/material": "^5.0.2",
+    "@mui/styled-engine-sc": "^5.0.0",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.22.0",
     "formik": "^2.2.9",
+    "formik-material-ui": "^4.0.0-alpha.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -52,5 +58,8 @@
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.4.1"
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   }
 }

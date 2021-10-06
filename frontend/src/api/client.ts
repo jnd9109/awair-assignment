@@ -16,4 +16,9 @@ client.interceptors.response.use(
   },
 );
 
+export interface ServerResponse {
+  status: number;
+  data: never;
+}
+
 export default client;

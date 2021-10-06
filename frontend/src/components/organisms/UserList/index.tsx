@@ -1,8 +1,25 @@
+import { Delete } from '@material-ui/icons';
+import {
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material';
 import moment from 'moment';
 import { FC, useCallback } from 'react';
+import styled from 'styled-components';
 import { User } from '../../../@types/User';
 import { useAppDispatch } from '../../../hooks/storeHooks';
 import { handleDeleteUser as handleDeleteUserAction } from '../../../reducers/user';
+
+const ListWrapper = styled.div`
+  padding: 24px;
+`;
 
 interface UserListProps {
   users: User[];
@@ -25,41 +42,40 @@ const UserList: FC<UserListProps> = ({ users }) => {
   );
 
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Created at</th>
-          <th scope="col">Email</th>
-          <th scope="col">Name</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {users &&
-          users.map((user: User) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{moment(user.createdAt).format('LLL')}</td>
-              <td>{user.email}</td>
-              <td>{user.name}</td>
-              <td>
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  style={{ marginLeft: '4px' }}
-                  onClick={() => handleDeleteUser(user)}
-                >
-                  <i
-                    className="bi bi-trash"
-                    style={{ color: 'white', cursor: 'pointer' }}
-                  />
-                </button>
-              </td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
+    <ListWrapper>
+      <Typography variant="h6" component="div">
+        List
+      </Typography>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Created at</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Delete</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {users &&
+              users.map((user: User) => (
+                <TableRow key={user.id}>
+                  <TableCell>{user.id}</TableCell>
+                  <TableCell>{moment(user.createdAt).format('LLL')}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>
+                    <IconButton onClick={() => handleDeleteUser(user)}>
+                      <Delete />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </ListWrapper>
   );
 };
 

@@ -8,24 +8,25 @@ export interface CreateUserRequest {
 
 export interface CreateUserResponse {
   user: User;
+  password: string;
 }
 
 class UserService {
-  fetchUsers = async () =>
-    client({
+  fetchUsers = async () => {
+    const response = await client({
       method: 'get',
       url: '/users/',
     });
+    return response;
+  };
 
-  createUser = async (
-    requestData: CreateUserRequest,
-  ): Promise<CreateUserResponse> => {
-    const { data } = await client({
+  createUser = async (requestData: CreateUserRequest) => {
+    const response = await client({
       method: 'post',
       url: '/users/',
       data: requestData,
     });
-    return data;
+    return response;
   };
 
   deleteUser = async (userId: string) => {
