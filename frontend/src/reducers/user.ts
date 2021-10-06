@@ -19,18 +19,18 @@ const initialState: UserState = {
 
 interface AddUsersPayload {
   users?: User[];
-  serverResponse?: AxiosResponse;
+  errorResponse?: AxiosResponse;
 }
 
 export interface AddUserPayload {
   user?: User;
   password?: string;
-  serverResponse?: AxiosResponse;
+  errorResponse?: AxiosResponse;
 }
 
 interface DeleteUserPayload {
   userId?: string;
-  serverResponse?: AxiosResponse;
+  errorResponse?: AxiosResponse;
 }
 
 export const handleFetchUsers = createAsyncThunk(
@@ -44,7 +44,7 @@ export const handleFetchUsers = createAsyncThunk(
         const serverError = error as AxiosError;
         if (serverError.response?.status && serverError.response?.data) {
           return {
-            serverResponse: serverError.response,
+            errorResponse: serverError.response,
           };
         }
       }
@@ -64,7 +64,7 @@ export const handleCreateUser = createAsyncThunk(
         const serverError = error as AxiosError;
         if (serverError && serverError.response) {
           return {
-            serverResponse: serverError.response,
+            errorResponse: serverError.response,
           };
         }
       }
@@ -78,13 +78,13 @@ export const handleDeleteUser = createAsyncThunk(
   async (userId: string): Promise<DeleteUserPayload> => {
     try {
       await userAPI.deleteUser(userId);
-      return { userId };
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const serverError = error as AxiosError;
         if (serverError && serverError.response) {
           return {
-            serverResponse: serverError.response,
+            userId,
+            errorResponse: serverError.response,
           };
         }
       }
@@ -110,25 +110,25 @@ export const userSlice = createSlice({
       }
     },
     addUser: (state, { payload }: PayloadAction<AddUserPayload>) => {
-      const { user, password, serverResponse } = payload;
+      const { user, password, errorResponse } = payload;
       const { users } = state;
       if (user && password) {
         const newUserState = { [user.id]: user, ...users };
         state.users = newUserState;
-        state.success = `User has been created. Please carefully save the password: ${password}`;
-      } else if (serverResponse?.status !== 409) {
+        state.success = `User [${user.email}] has been created. Please carefully save the password: ${password}`;
+      } else if (errorResponse?.status !== 409) {
         state.failed = 'Something went wrong.';
       }
     },
     deleteUser: (state, { payload }: PayloadAction<DeleteUserPayload>) => {
-      const { userId, serverResponse } = payload;
-      if (userId) {
-        const { users } = state;
+      const { userId, errorResponse } = payload;
+      const { users } = state;
+      if (userId && !errorResponse) {
         delete users[userId];
-      } else if (serverResponse) {
-        const { status } = serverResponse;
+      } else if (userId && errorResponse) {
+        const { status } = errorResponse;
         if (status === 404) {
-          state.failed = 'User not found.';
+          state.failed = `User [${users[userId].email}] not found.`;
         }
       } else {
         state.failed = 'Something went wrong.';
