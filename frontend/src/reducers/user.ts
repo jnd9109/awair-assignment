@@ -98,7 +98,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     addUsers: (state, { payload }: PayloadAction<AddUsersPayload>) => {
-      const { users, serverResponse } = payload;
+      const { users } = payload;
       if (users) {
         const newUserState = users.reduce(
           (acc: { [id: string]: User }, u: User) => ({ ...acc, [u.id]: u }),

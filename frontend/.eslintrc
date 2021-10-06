@@ -23,7 +23,7 @@
     "radix": "off",
     "arrow-body-style": "warn",
     "no-console": "off",
-    "react/jsx-one-expression-per-line": "warn",
+    "react/jsx-one-expression-per-line": "off",
     "@typescript-eslint/indent": "warn",
     "operator-linebreak": "warn",
     "react/self-closing-comp": "warn",

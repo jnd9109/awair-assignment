@@ -36,7 +36,9 @@ const UserCreateForm: FC<{}> = () => {
         onSubmit={async ({ email, name }, { resetForm, setFieldError }) => {
           const response = await dispatch(handleCreateUser({ email, name }));
           const payload = response.payload as AddUserPayload;
-          if (payload.serverResponse?.status === 409) {
+          if (payload.user) {
+            resetForm();
+          } else if (payload.serverResponse?.status === 409) {
             setFieldError('email', 'Email already used.');
           }
         }}

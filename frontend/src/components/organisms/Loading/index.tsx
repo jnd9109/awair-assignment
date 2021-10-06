@@ -1,3 +1,4 @@
+import { Box, CircularProgress } from '@mui/material';
 import styled from 'styled-components';
 
 const LoadingWrapper = styled.div`
@@ -10,25 +11,11 @@ const LoadingWrapper = styled.div`
   height: 100vh;
 `;
 
-const SpinnerContainer = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -25px;
-  margin-top: -25px;
-  height: 50px;
-  width: 50px;
-`;
-
-const LoadingSpinner = () => (
-  <SpinnerContainer className="spinner-grow" role="status">
-    <span className="visually-hidden">Loading...</span>
-  </SpinnerContainer>
-);
-
 const Loading = () => (
   <LoadingWrapper>
-    <LoadingSpinner />
+    <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box>
   </LoadingWrapper>
 );
 
