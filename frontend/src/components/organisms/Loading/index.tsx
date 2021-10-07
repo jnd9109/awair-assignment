@@ -1,7 +1,7 @@
 import { Box, CircularProgress } from '@mui/material';
 import styled from 'styled-components';
 
-const LoadingWrapper = styled.div`
+const Overlay = styled.div`
   position: fixed;
   left: 0;
   top: 0;
@@ -11,12 +11,24 @@ const LoadingWrapper = styled.div`
   height: 100vh;
 `;
 
+const BoxWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  height: 40px;
+  left: 50%;
+  margin-left: --20px;
+  width: 40px;
+`;
+
 const Loading = () => (
-  <LoadingWrapper>
-    <Box sx={{ display: 'flex' }}>
-      <CircularProgress />
-    </Box>
-  </LoadingWrapper>
+  <Overlay>
+    <BoxWrapper>
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
+    </BoxWrapper>
+  </Overlay>
 );
 
 export default Loading;

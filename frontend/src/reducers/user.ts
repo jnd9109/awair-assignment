@@ -12,7 +12,7 @@ interface UserState {
 
 const initialState: UserState = {
   users: {},
-  loading: false,
+  loading: true,
   success: '',
   failed: '',
 };
@@ -42,7 +42,7 @@ export const handleFetchUsers = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const serverError = error as AxiosError;
-        if (serverError.response?.status && serverError.response?.data) {
+        if (serverError && serverError.response) {
           return {
             errorResponse: serverError.response,
           };
