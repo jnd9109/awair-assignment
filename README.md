@@ -6,7 +6,7 @@ Coding assignment for application at Awair.
 
 ## Specs
 ### Backend
-* Django 3.2.1
+* Django
 * Django-Rest-Framework
 * SQLite
 
@@ -66,6 +66,7 @@ For the sake of POC, the env file containing the variables is included in the re
 - Dockerfile
 - Move statics to a CDN instead of having them in the repository.
 - More from SQLite to a separated RDBMS like MySQL or Postgres.
+- API Documentation endpoint
 
 ### Frontend
 - ~~Move frontend into its own project so we can refactorize the code using Typescript.~~
