@@ -1,0 +1,65 @@
+{
+  "name": "await-frontend",
+  "version": "1.0.0",
+  "description": "Awair coding assignment frontend",
+  "main": "index.js",
+  "repository": "git@github.com:jnd9109/awair-assignment.git",
+  "author": "JND",
+  "license": "MIT",
+  "scripts": {
+    "start": "REACT_APP_MODE=dev react-scripts start",
+    "build": "REACT_APP_MODE=prod react-scripts build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/material": "^5.0.2",
+    "@mui/styled-engine-sc": "^5.0.0",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+    "@reduxjs/toolkit": "^1.6.1",
+    "axios": "^0.22.0",
+    "formik": "^2.2.9",
+    "formik-material-ui": "^4.0.0-alpha.1",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
+    "react-scripts": "^4.0.3",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.1",
+    "typescript": "^4.4.3",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.14",
+    "@types/yup": "^0.29.13",
+    "babel-loader": "8.1.0",
+    "babel-plugin-styled-components": "^1.13.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.4.1"
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+  }
+}

@@ -1,12 +1,38 @@
+const initialState = [];
+const ADD_USERS = 'ADD_USERS';
+const ADD_USER = 'ADD_USER';
+const DELETE_USER = 'DELETE_USER';
+
+const userReducer = (state, action) => {
+  switch (action.type) {
+    case ADD_USERS:
+      const { users } = action.payload;
+      return [...users];
+    case ADD_USER:
+      const { user } = action.payload;
+      return ([user, ...state]);
+    case DELETE_USER:
+      const { userId } = action.payload;
+      return state.filter(user => user.id !== userId);
+    default:
+      return state;
+  }
+}
+
 const Page = () => {
   const [loading, setLoading] = React.useState(true);
-  const [users, setUsers] = React.useState([]);
+  const [state, dispatch] = React.useReducer(userReducer, initialState);
   const [errorAlert, setErrorAlert] = React.useState('');
   const [successAlert, setSuccessAlert] = React.useState('');
+  const [recentlyAddedUser, setRecentlyAddedUser] = React.useState(null);
 
   const addUser = React.useCallback((user) => {
-    setUsers([user, ...users])
-  }, [users, setUsers]);
+    dispatch({ type: ADD_USER, payload: { user } });
+    setRecentlyAddedUser(user);
+    setTimeout(() => {
+      setRecentlyAddedUser(null);
+    }, 3000);
+  }, [dispatch, setRecentlyAddedUser]);
 
   const handleLoadUsers = React.useCallback(async () => {
     try {
@@ -16,7 +42,7 @@ const Page = () => {
       });
       if (status === 200) {
         setLoading(false);
-        setUsers(data);
+        dispatch({ type: ADD_USERS, payload: { users: data } });
         return;
       }
     } catch (error) {
@@ -28,15 +54,16 @@ const Page = () => {
          setErrorAlert('Something went wrong...');
        }
     }
-  }, [setUsers]);
+  }, [dispatch]);
 
   React.useEffect(() => {
     handleLoadUsers();
+    moment.locale(navigator.language);
   }, []);
 
   const deleteUser = React.useCallback((id) => {
-    setUsers(users.filter(user => user.id !== id));
-  }, [setUsers, users]);
+    dispatch({ type: DELETE_USER, payload: { userId: id } });
+  }, [dispatch]);
 
   return (
     <PageWrapper>
@@ -45,7 +72,14 @@ const Page = () => {
       {successAlert && <Alert status='success' message={successAlert} />}
       {errorAlert && (<Alert status='danger' message={errorAlert} />)}
       <UserCreateForm setLoading={setLoading} addUser={addUser} setSuccessAlert={setSuccessAlert} setErrorAlert={setErrorAlert} />
-      <UserList users={users} deleteUser={deleteUser} setSuccessAlert={setSuccessAlert} setErrorAlert={setErrorAlert} setLoading={setLoading} />
+      <UserList
+        users={state}
+        deleteUser={deleteUser}
+        setSuccessAlert={setSuccessAlert}
+        setErrorAlert={setErrorAlert}
+        setLoading={setLoading}
+        recentlyAddedUser={recentlyAddedUser}
+      />
     </PageWrapper>
   );
 };
