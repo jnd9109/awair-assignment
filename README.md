@@ -71,5 +71,5 @@ For the sake of POC, the env file containing the variables is included in the re
 ### Frontend
 - ~~Move frontend into its own project so we can refactorize the code using Typescript.~~
 - ~~Use Formik and Yup for the user create Form validation.~~
-- Unit tests using Jest and Enzyme
+- Unit tests using Jest and React-Testing-Library
 - Pagination
