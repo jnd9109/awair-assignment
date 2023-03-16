@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "start": "REACT_APP_MODE=dev react-scripts start",
-    "build": "REACT_APP_MODE=prod react-scripts build"
+    "build": "REACT_APP_MODE=prod react-scripts build",
+    "lint": "lint-staged"
   },
   "browserslist": {
     "production": [
@@ -26,8 +27,8 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@mui/material": "^5.0.2",
-    "@mui/styled-engine-sc": "^5.0.0",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+    "@mui/styled-engine-sc": "^5.0.0",
     "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.22.0",
     "formik": "^2.2.9",
@@ -57,9 +58,21 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.4.1"
+    "lint-staged": "^13.2.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.4.1",
+    "prettier-eslint": "^15.0.1",
+    "prettier-eslint-cli": "^7.1.0",
+    "stylelint": "^15.2.0",
+    "stylelint-config-recommended": "^10.0.1",
+    "stylelint-config-standard-scss": "^7.0.1",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
   },
   "resolutions": {
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
-  }
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }
