@@ -1,15 +1,12 @@
 import { Alert, Divider, Stack, Typography } from '@mui/material';
 import { FC, useEffect, useMemo } from 'react';
-import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../hooks/storeHooks';
 import { handleFetchUsers } from '../reducers/user';
 import Loading from './organisms/Loading';
 import UserCreateForm from './organisms/UserCreateForm';
 import UserList from './organisms/UserList';
 
-const PageWrapper = styled.div`
-  padding: 16px;
-`;
+import { PageWrapper } from './styled';
 
 const App: FC<{}> = () => {
   const dispatch = useAppDispatch();

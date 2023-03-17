@@ -2,14 +2,12 @@ import { Button, FormControl, LinearProgress, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import { TextField } from 'formik-material-ui';
 import { FC } from 'react';
-import styled from 'styled-components';
 import * as yup from 'yup';
+
 import { useAppDispatch } from '../../../hooks/storeHooks';
 import { AddUserPayload, handleCreateUser } from '../../../reducers/user';
 
-const FormWrapper = styled.div`
-  padding: 24px;
-`;
+import { FormWrapper } from './styled';
 
 const FormSchema = yup.object().shape({
   name: yup
