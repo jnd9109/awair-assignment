@@ -12,14 +12,12 @@ import {
 } from '@mui/material';
 import moment from 'moment';
 import { FC, useCallback } from 'react';
-import styled from 'styled-components';
+
 import { User } from '../../../@types/User';
 import { useAppDispatch } from '../../../hooks/storeHooks';
 import { handleDeleteUser as handleDeleteUserAction } from '../../../reducers/user';
 
-const ListWrapper = styled.div`
-  padding: 24px;
-`;
+import { ListWrapper } from './styled';
 
 interface UserListProps {
   users: User[];

@@ -9,7 +9,10 @@
   "scripts": {
     "start": "REACT_APP_MODE=dev react-scripts start",
     "build": "REACT_APP_MODE=prod react-scripts build",
-    "lint": "lint-staged"
+    "lint-staged": "lint-staged",
+    "js-lint": "eslint --fix --ext .js,.jsx,.ts,.tsx",
+    "style-lint": "stylelint './**/styled.{js,jsx,ts,tsx}'",
+    "prepare": "cd .. && husky install frontend/.husky"
   },
   "browserslist": {
     "production": [
@@ -58,21 +61,19 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
-    "pre-commit": "^1.2.2",
+    "postcss": "^8.4.21",
     "prettier": "^2.4.1",
     "prettier-eslint": "^15.0.1",
     "prettier-eslint-cli": "^7.1.0",
-    "stylelint": "^15.2.0",
-    "stylelint-config-recommended": "^10.0.1",
-    "stylelint-config-standard-scss": "^7.0.1",
+    "stylelint": "^14.16.1",
+    "stylelint-config-recommended": "^9.0.0",
+    "stylelint-config-standard-scss": "^6.1.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0"
   },
   "resolutions": {
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
-  },
-  "pre-commit": [
-    "lint"
-  ]
+  }
 }
