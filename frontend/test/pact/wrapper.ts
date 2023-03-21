@@ -1,4 +1,4 @@
-import { beforeAll, afterAll, afterEach } from '@jest/globals';
+import { beforeAll, afterAll, afterEach, beforeEach } from '@jest/globals';
 
 import provider from './provider';
 
@@ -12,4 +12,8 @@ afterAll(async () => {
 
 afterEach(async () => {
   await provider.verify();
+});
+
+beforeEach(async () => {
+  await provider.removeInteractions();
 });
