@@ -1,0 +1,191 @@
+{
+  "consumer": {
+    "name": "Consumer"
+  },
+  "interactions": [
+    {
+      "description": "a request to create a user",
+      "providerState": "Create user",
+      "request": {
+        "body": {
+          "email": "starlord@gotg2.com",
+          "name": "Starlord"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "method": "POST",
+        "path": "/users/"
+      },
+      "response": {
+        "body": {
+          "password": "password",
+          "user": {
+            "createdAt": "2021-01-01T00:00:00.000Z",
+            "email": "starlord@gotg2.com",
+            "id": "1234567890",
+            "name": "Starlord"
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 201
+      }
+    },
+    {
+      "description": "a request to delete a user",
+      "providerState": "Delete user",
+      "request": {
+        "method": "DELETE",
+        "path": "/users/1234567890"
+      },
+      "response": {
+        "body": {
+          "userId": "1234567890"
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to get the list of users",
+      "providerState": "List users",
+      "request": {
+        "method": "GET",
+        "path": "/users/"
+      },
+      "response": {
+        "body": [
+          {
+            "createdAt": "2021-01-01T00:00:00.000Z",
+            "email": "startlord@gotg.com",
+            "id": "1234567890",
+            "name": "Starlord"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to create a user",
+      "providerState": "List users",
+      "request": {
+        "body": {
+          "email": "starlord@gotg2.com",
+          "name": "Starlord"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "method": "POST",
+        "path": "/users/"
+      },
+      "response": {
+        "body": {
+          "password": "password",
+          "user": {
+            "createdAt": "2021-01-01T00:00:00.000Z",
+            "email": "starlord@gotg2.com",
+            "id": "1234567890",
+            "name": "Starlord"
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to create a user",
+      "providerState": "List users",
+      "request": {
+        "body": {
+          "email": "starlord@gotg2.com",
+          "name": "Starlord"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "method": "POST",
+        "path": "/users/"
+      },
+      "response": {
+        "body": {
+          "password": "password",
+          "user": {
+            "createdAt": "2021-01-01T00:00:00.000Z",
+            "email": "starlord@gotg2.com",
+            "id": "1234567890",
+            "name": "Starlord"
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 201
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "11.0.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "Provider"
+  }
+}

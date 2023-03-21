@@ -11,7 +11,7 @@ const client = axios.create({
 client.interceptors.response.use(
   (res) => res,
   (error: AxiosError<any>) => {
-    console.error(`[${error.response?.status}] ${error.response?.data}`);
+    console.error(error.response?.status, error.response?.data);
     return Promise.reject(error);
   },
 );

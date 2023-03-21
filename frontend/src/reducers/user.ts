@@ -10,7 +10,7 @@ interface UserState {
   failed: string;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   users: {},
   loading: true,
   success: '',
