@@ -30,8 +30,8 @@ Create a simple User Management Application that provides the following function
 
 - Calls list All user API on page load
 - Renders a list of users with the following information:
-      1. Name
-      2. Email
+  1. Name
+  2. Email
 - Displays a delete button for each user that calls your delete service
 - Add a form to create new users with the following elements: inputs to enter name and email (with placeholder)
 - Submit button to does the following:
