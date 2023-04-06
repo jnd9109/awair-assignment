@@ -8,6 +8,8 @@ const store = configureStore({
   devTools: !(process.env.REACT_APP_MODE === 'prod'),
 });
 
+export const makeStore = () => store;
+
 export default store;
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
